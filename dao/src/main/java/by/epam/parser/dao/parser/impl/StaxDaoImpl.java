@@ -13,18 +13,11 @@ import java.util.List;
 
 public class StaxDaoImpl implements BaseDao<Book> {
 
-    private static final InputStream inputStream = SourceStream.getInputStream();
+//    private static final InputStream inputStream = ;
     private static final XMLInputFactory FACTORY = XMLInputFactory.newInstance();
     private final StaxProcessHandler staxProcessHandler = new StaxProcessHandler();
-    private final XMLStreamReader reader;
+    private  XMLStreamReader reader;
 
-    {
-        try {
-            reader = FACTORY.createXMLStreamReader(inputStream);
-        } catch (XMLStreamException e) {
-            throw new ParserCreationException("ERROR WHILE CREATING StAX PARSER " + e);
-        }
-    }
 
 
     public StaxDaoImpl() {
@@ -35,6 +28,7 @@ public class StaxDaoImpl implements BaseDao<Book> {
     @Override
     public List<Book> getAll() throws DAOException {
         try {
+            reader = FACTORY.createXMLStreamReader(SourceStream.getInputStream());
             while (reader.hasNext()) {
                 staxProcessHandler.handle(reader);
             }
