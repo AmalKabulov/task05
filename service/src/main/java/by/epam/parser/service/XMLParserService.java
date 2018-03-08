@@ -5,7 +5,7 @@ import by.epam.parser.service.exception.ServiceException;
 
 import java.util.List;
 
-public interface BaseService<E extends BaseEntity> {
+public interface XMLParserService<E extends BaseEntity> {
     List<E> getAll() throws ServiceException;
 
 }

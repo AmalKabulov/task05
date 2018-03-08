@@ -1,8 +1,10 @@
 package by.epam.parser.dao;
 
-import by.epam.parser.dao.parser.impl.DomDaoImpl;
-import by.epam.parser.dao.parser.impl.SaxDaoImp;
-import by.epam.parser.dao.parser.impl.StaxDaoImpl;
+import by.epam.parser.dao.parser.impl.DomParserDaoImpl;
+import by.epam.parser.dao.parser.impl.SaxParserDaoImp;
+import by.epam.parser.dao.parser.impl.StaxParserDaoImpl;
+
+import java.io.InputStream;
 
 public class DAOFactory {
 
@@ -16,13 +18,16 @@ public class DAOFactory {
         return instance;
     }
 
-    public BaseDao getDAO(final String parserType) {
+    public XMLParserDao getDAO(final String parserType) {
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = contextClassLoader.getResourceAsStream("books.xml");
+
         if (parserType.equalsIgnoreCase("SAX")) {
-            return new SaxDaoImp();
+            return new SaxParserDaoImp(inputStream);
         } else if (parserType.equalsIgnoreCase("DOM")) {
-            return new DomDaoImpl();
+            return new DomParserDaoImpl(inputStream);
         } else {
-            return new StaxDaoImpl();
+            return new StaxParserDaoImpl(inputStream);
         }
     }
 }

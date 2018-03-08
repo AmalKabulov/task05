@@ -1,6 +1,6 @@
 package by.epam.parser.dao.parser.impl;
 
-import by.epam.parser.dao.BaseDao;
+import by.epam.parser.dao.XMLParserDao;
 import by.epam.parser.entity.Book;
 import by.epam.parser.exception.DAOException;
 import by.epam.parser.exception.ParserCreationException;
@@ -14,9 +14,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class DomDaoImpl implements BaseDao<Book> {
+public class DomParserDaoImpl implements XMLParserDao<Book> {
 
-    private static final InputStream inputStream = SourceStream.getInputStream();
+    private final InputStream inputStream;
     private final DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
     private final DomProcessHandler processHandler = new DomProcessHandler();
     private final DocumentBuilder dom;
@@ -31,6 +31,11 @@ public class DomDaoImpl implements BaseDao<Book> {
             throw new ParserCreationException("ERROR WHILE CREATING DOM PARSER: " + e);
         }
     }
+
+    public DomParserDaoImpl(InputStream inputStream) {
+        this.inputStream = inputStream;
+    }
+
     @Override
     public List<Book> getAll() throws DAOException {
         try {

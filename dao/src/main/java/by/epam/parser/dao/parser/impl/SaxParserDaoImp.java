@@ -1,6 +1,6 @@
 package by.epam.parser.dao.parser.impl;
 
-import by.epam.parser.dao.BaseDao;
+import by.epam.parser.dao.XMLParserDao;
 import by.epam.parser.entity.Book;
 import by.epam.parser.exception.DAOException;
 import by.epam.parser.exception.ParserCreationException;
@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-public class SaxDaoImp implements BaseDao<Book> {
+public class SaxParserDaoImp implements XMLParserDao<Book> {
 
-//    private static final InputStream inputStream = SourceStream.getInputStream();
+    private final InputStream inputStream;
     private final SaxProcessHandler saxProcessHandler = new SaxProcessHandler();
     private final SAXParser saxParser;
 
@@ -27,12 +27,13 @@ public class SaxDaoImp implements BaseDao<Book> {
         }
     }
 
-    public SaxDaoImp() {
+    public SaxParserDaoImp(InputStream inputStream) {
+        this.inputStream = inputStream;
     }
 
     public List<Book> getAll() throws DAOException {
         try {
-            saxParser.parse(SourceStream.getInputStream(), saxProcessHandler);
+            saxParser.parse(inputStream, saxProcessHandler);
             return saxProcessHandler.getBooks();
         } catch (SAXException | IOException e) {
             throw new DAOException("ERROR WHILE PARSING FILE WITH SAX" + e);

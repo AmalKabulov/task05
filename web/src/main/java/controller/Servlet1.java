@@ -1,6 +1,6 @@
 package controller;
 
-import by.epam.parser.service.BaseService;
+import by.epam.parser.service.XMLParserService;
 import by.epam.parser.service.ServiceFactory;
 import by.epam.parser.service.exception.ServiceException;
 
@@ -10,10 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 @WebServlet("/")
 public class Servlet1 extends HttpServlet {
@@ -23,7 +20,7 @@ public class Servlet1 extends HttpServlet {
         String parser = req.getParameter("parser");
         if (parser != null) {
             ServiceFactory serviceFactory = ServiceFactory.getInstance();
-            BaseService service = serviceFactory.getService(parser);
+            XMLParserService service = serviceFactory.getService(parser);
             try {
                 List all = service.getAll();
                 req.setAttribute("books", all);
