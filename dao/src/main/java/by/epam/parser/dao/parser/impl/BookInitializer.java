@@ -7,14 +7,6 @@ import java.time.LocalDate;
 import java.util.Map;
 
 public class BookInitializer {
-    //    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-    private static final String AUTHOR = "author";
-    private static final String TITLE = "title";
-    private static final String GENRE = "genre";
-    private static final String PRICE = "price";
-    private static final String PUBLISH_DATE = "publish_date";
-    private static final String DESCRIPTION = "description";
 
 
     public BookInitializer() {
@@ -22,14 +14,14 @@ public class BookInitializer {
 
 
     public void init(final Book book, final Map<String, String> bookValues) {
-        String author = bookValues.get(AUTHOR);
-        String title = bookValues.get(TITLE);
-        String genreValue = bookValues.get(GENRE);
+        String author = bookValues.get(Constant.AUTHOR);
+        String title = bookValues.get(Constant.TITLE);
+        String genreValue = bookValues.get(Constant.GENRE);
         Genre genre = Genre.getByValue(genreValue);
-        Double price = Double.parseDouble(bookValues.get(PRICE));
-        String publishDate = bookValues.get(PUBLISH_DATE);
+        Double price = Double.parseDouble(bookValues.get(Constant.PRICE));
+        String publishDate = bookValues.get(Constant.PUBLISH_DATE);
         LocalDate formattedDate = LocalDate.parse(publishDate);
-        String description = bookValues.get(DESCRIPTION);
+        String description = bookValues.get(Constant.DESCRIPTION);
 
 
         book.setAuthor(author);

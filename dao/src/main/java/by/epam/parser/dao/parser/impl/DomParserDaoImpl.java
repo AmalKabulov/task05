@@ -16,9 +16,9 @@ import java.util.List;
 
 public class DomParserDaoImpl implements XMLParserDao<Book> {
 
-    private final InputStream inputStream;
     private final DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
     private final DomProcessHandler processHandler = new DomProcessHandler();
+    private final InputStream inputStream;
     private final DocumentBuilder dom;
 
     {

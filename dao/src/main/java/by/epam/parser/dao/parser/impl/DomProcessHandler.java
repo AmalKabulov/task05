@@ -18,7 +18,7 @@ public class DomProcessHandler {
 
     //TODO book - const
     public void handle(final Document document) {
-        NodeList books = document.getElementsByTagName("book");
+        NodeList books = document.getElementsByTagName(Constant.BOOK_ELEMENT_TAG);
         if (books.getLength() > 0) {
             nodeHandler(books);
         }
@@ -46,7 +46,7 @@ public class DomProcessHandler {
         int length = childElements.getLength();
         for (int i = 0; i < length; i++) {
             Node child = childElements.item(i);
-            if (!child.getNodeName().equals("#text")) {
+            if (!child.getNodeName().equals(Constant.TEXT)) {
                 parse(child);
             }
         }
@@ -55,7 +55,7 @@ public class DomProcessHandler {
 
     private void attributeHandler(final Node node, final Book book) {
         if (node.hasAttributes()) {
-            String id = node.getAttributes().getNamedItem("id").getTextContent();
+            String id = node.getAttributes().getNamedItem(Constant.ID).getTextContent();
             book.setId(id);
         }
     }
@@ -67,7 +67,7 @@ public class DomProcessHandler {
         String nodeName = node.getNodeName();
         if (node.getTextContent() != null) {
             text = node.getTextContent();
-            text = text.replaceAll("[\\s]{2,}", " ");
+            text = text.replaceAll(Constant.TWO_SPACES, Constant.SPACE);
         }
         bookValues.put(nodeName, text.trim());
     }
@@ -75,4 +75,5 @@ public class DomProcessHandler {
     public List<Book> getBooks() {
         return books;
     }
+
 }

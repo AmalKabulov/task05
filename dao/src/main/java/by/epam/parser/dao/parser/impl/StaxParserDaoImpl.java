@@ -12,9 +12,9 @@ import java.util.List;
 
 public class StaxParserDaoImpl implements XMLParserDao<Book> {
 
-    private final InputStream inputStream;
     private static final XMLInputFactory FACTORY = XMLInputFactory.newInstance();
     private final StaxProcessHandler staxProcessHandler = new StaxProcessHandler();
+    private final InputStream inputStream;
     private  XMLStreamReader reader;
 
 

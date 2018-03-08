@@ -15,8 +15,8 @@ import java.util.List;
 
 public class SaxParserDaoImp implements XMLParserDao<Book> {
 
-    private final InputStream inputStream;
     private final SaxProcessHandler saxProcessHandler = new SaxProcessHandler();
+    private final InputStream inputStream;
     private final SAXParser saxParser;
 
     {

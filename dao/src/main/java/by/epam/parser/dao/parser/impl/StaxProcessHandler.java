@@ -41,7 +41,7 @@ public class StaxProcessHandler {
     private void startElementHandler(final XMLStreamReader reader) {
 
         String elementName = reader.getLocalName();
-        if (elementName.equals("book")) {
+        if (elementName.equals(Constant.BOOK_ELEMENT_TAG)) {
             book = new Book();
             attributeHandler(reader);
         } else {
@@ -59,7 +59,7 @@ public class StaxProcessHandler {
     // TODO book - const
     private void endElementHandler(final XMLStreamReader reader) {
         String endElementName = reader.getLocalName();
-        if (endElementName.equals("book")) {
+        if (endElementName.equals(Constant.BOOK_ELEMENT_TAG)) {
             bookInitializer.init(book, bookValues);
             books.add(book);
         } else {
@@ -73,8 +73,8 @@ public class StaxProcessHandler {
         String text = reader.getText().trim();
 
         if (text.length() > 0) {
-            text = text.replaceAll("[\\s]{2,}", " ");
-            text += " ";
+            text = text.replaceAll(Constant.TWO_SPACES, Constant.SPACE);
+            text += Constant.SPACE;
             characters.append(text);
         }
 
@@ -84,4 +84,5 @@ public class StaxProcessHandler {
     public List<Book> getBooks() {
         return books;
     }
+
 }
