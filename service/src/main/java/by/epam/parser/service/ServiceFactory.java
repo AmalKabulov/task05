@@ -25,10 +25,4 @@ public class ServiceFactory {
     }
 
 
-    public static void main(String[] args) throws ServiceException {
-        ServiceFactory serviceFactory = ServiceFactory.getInstance();
-        XMLParserService sax = serviceFactory.getService("STAX");
-        List all = sax.getAll();
-        all.forEach(System.out::println);
-    }
 }
