@@ -1,5 +1,6 @@
 package by.epam.parser.dao.parser.impl;
 
+import by.epam.parser.dao.parser.Constant;
 import by.epam.parser.entity.Book;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
