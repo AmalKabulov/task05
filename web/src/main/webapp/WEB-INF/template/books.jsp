@@ -43,7 +43,8 @@
     <ul class="pager">
         <c:if test="${requestScope.page != 1}">
             <li>
-                <a href="/?page=${page - 1}&command=${requestScope.command}&parser=${requestScope.parser}" aria-label="Previous">
+                <a href="/?page=${page - 1}&command=${requestScope.command}&parser=${requestScope.parser}"
+                   aria-label="Previous">
                     <span aria-hidden="true">«</span>
                 </a>
             </li>
@@ -55,21 +56,27 @@
                     <li>${index}</li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="/?page=${index}&command=${requestScope.command}&parser=${requestScope.parser}"> ${index} </a></li>
+                    <li>
+                        <a href="/?page=${index}&command=${requestScope.command}&parser=${requestScope.parser}"> ${index} </a>
+                    </li>
                 </c:otherwise>
             </c:choose>
 
         </c:forEach>
 
         <c:if test="${requestScope.page lt requestScope.pageCount}">
-        <li>
-            <a href="/?page=${page + 1}&command=${requestScope.command}&parser=${requestScope.parser}" aria-label="Next">
-                <span aria-hidden="true">»</span>
-            </a>
-        </li>
+            <li>
+                <a href="/?page=${page + 1}&command=${requestScope.command}&parser=${requestScope.parser}"
+                   aria-label="Next">
+                    <span aria-hidden="true">»</span>
+                </a>
+            </li>
         </c:if>
     </ul>
 </nav>
 
+<form action="/" method="get">
+    <button class="btn btn-default" type="submit" value="main" name="command">HOME</button>
+</form>
 </body>
 </html>

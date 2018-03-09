@@ -1,16 +1,20 @@
 package controller.command;
 
-import controller.command.impl.ParserCommandImpl;
+import controller.ParamConst;
+import controller.command.impl.HomeCommand;
+import controller.command.impl.ParserCommand;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ActionDirector {
 
     private static final ActionDirector instance = new ActionDirector();
-    private final Map<String, Command> commands = new ConcurrentHashMap<>() {
+    private final Map<String, Command> actions = new ConcurrentHashMap<>() {
         {
-            put("parse", new ParserCommandImpl());
+            put("parse", new ParserCommand());
+            put("main", new HomeCommand());
         }
     };
 
@@ -19,8 +23,9 @@ public class ActionDirector {
     }
 
 
-    public Command getAction(final String command) {
-        return commands.get(command.toLowerCase());
+    public String runAction(final HttpServletRequest req) {
+        String command = req.getParameter(ParamConst.COMMAND);
+        return actions.get(command.toLowerCase()).execute(req);
 
     }
 

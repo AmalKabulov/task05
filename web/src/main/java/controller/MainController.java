@@ -28,8 +28,7 @@ public class MainController extends HttpServlet {
         ActionDirector actionDirector = ActionDirector.getInstance();
         String command = req.getParameter(ParamConst.COMMAND);
         if (command != null) {
-            Command action = actionDirector.getAction(command);
-            String url = action.execute(req);
+            String url = actionDirector.runAction(req);
             req.getRequestDispatcher(url).forward(req, resp);
 
         }
