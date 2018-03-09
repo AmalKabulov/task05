@@ -69,7 +69,6 @@ public class StaxProcessHandler {
 
     private void characterHandler(final XMLStreamReader reader) throws XMLStreamException {
         String text = reader.getText().trim();
-
         if (text.length() > 0) {
             text = text.replaceAll(Constant.TWO_SPACES, Constant.SPACE);
             text += Constant.SPACE;
