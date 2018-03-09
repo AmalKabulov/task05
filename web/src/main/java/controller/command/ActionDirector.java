@@ -2,8 +2,6 @@ package controller.command;
 
 import controller.command.impl.ParserCommandImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -22,7 +20,6 @@ public class ActionDirector {
 
 
     public Command getAction(final String command) {
-
         return commands.get(command.toLowerCase());
 
     }

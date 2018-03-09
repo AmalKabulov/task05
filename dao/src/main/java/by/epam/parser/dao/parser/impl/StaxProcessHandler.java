@@ -38,7 +38,6 @@ public class StaxProcessHandler {
         }
     }
 
-    // TODO book - const
     private void startElementHandler(final XMLStreamReader reader) {
 
         String elementName = reader.getLocalName();
@@ -57,7 +56,6 @@ public class StaxProcessHandler {
         }
     }
 
-    // TODO book - const
     private void endElementHandler(final XMLStreamReader reader) {
         String endElementName = reader.getLocalName();
         if (endElementName.equals(Constant.BOOK_ELEMENT_TAG)) {
@@ -69,7 +67,6 @@ public class StaxProcessHandler {
         }
     }
 
-    // TODO regexp - const, space - const
     private void characterHandler(final XMLStreamReader reader) throws XMLStreamException {
         String text = reader.getText().trim();
 

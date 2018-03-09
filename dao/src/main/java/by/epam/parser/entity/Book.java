@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Book extends BaseEntity{
-//    private String id;
     private String author;
     private String title;
     private Genre genre;
@@ -16,13 +15,6 @@ public class Book extends BaseEntity{
     public Book() {
     }
 
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
 
     public String getAuthor() {
         return author;

@@ -34,7 +34,6 @@ public class SaxProcessHandler extends DefaultHandler {
     }
 
 
-    //TODO book - const, id - const
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         if (qName.equalsIgnoreCase(Constant.BOOK_ELEMENT_TAG)) {
@@ -46,7 +45,6 @@ public class SaxProcessHandler extends DefaultHandler {
         }
     }
 
-    //TODO book - const
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         if (qName.equalsIgnoreCase(Constant.BOOK_ELEMENT_TAG)) {
@@ -58,7 +56,6 @@ public class SaxProcessHandler extends DefaultHandler {
         }
     }
 
-    //TODO regexp - const, space - const
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         String characters = new String(ch, start, length).trim();

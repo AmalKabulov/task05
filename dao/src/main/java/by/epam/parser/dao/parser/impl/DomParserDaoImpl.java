@@ -23,8 +23,6 @@ public class DomParserDaoImpl implements XMLParserDao<Book> {
 
     {
         try {
-//            factory.setIgnoringComments(true);
-//            factory.setIgnoringElementContentWhitespace(true);
             dom = factory.newDocumentBuilder();
 
         } catch (ParserConfigurationException e) {

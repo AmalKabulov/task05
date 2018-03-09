@@ -17,7 +17,6 @@ public class DomProcessHandler {
     private final Map<String, String> bookValues = new HashMap<>();
     private final List<Book> books = new ArrayList<>();
 
-    //TODO book - const
     public void handle(final Document document) {
         NodeList books = document.getElementsByTagName(Constant.BOOK_ELEMENT_TAG);
         if (books.getLength() > 0) {
@@ -42,7 +41,6 @@ public class DomProcessHandler {
     }
 
 
-    //TODO  #text - const
     private void childHandler(final NodeList childElements) {
         int length = childElements.getLength();
         for (int i = 0; i < length; i++) {
@@ -62,7 +60,6 @@ public class DomProcessHandler {
     }
 
 
-    //TODO regexp - const, space - const
     private void parse(final Node node) {
         String text = null;
         String nodeName = node.getNodeName();

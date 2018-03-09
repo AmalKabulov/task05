@@ -3,14 +3,13 @@ package by.epam.parser.service.impl;
 import by.epam.parser.dao.XMLParserDao;
 import by.epam.parser.entity.Book;
 import by.epam.parser.exception.DAOException;
-import by.epam.parser.service.XMLParserService;
+import by.epam.parser.service.BaseService;
 import by.epam.parser.service.exception.ServiceException;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class BookServiceImpl implements XMLParserService<Book> {
+public class BookServiceImpl implements BaseService<Book> {
 
     private XMLParserDao dao;
     private Integer pageCount;
