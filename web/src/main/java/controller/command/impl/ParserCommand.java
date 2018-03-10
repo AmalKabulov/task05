@@ -10,8 +10,11 @@ import controller.command.Command;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import org.apache.log4j.Logger;
 
 public class ParserCommand implements Command {
+
+    private static final Logger logger = Logger.getLogger(ParserCommand.class);
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -34,6 +37,9 @@ public class ParserCommand implements Command {
             request.setAttribute(ParamConst.COMMAND, command);
             return URL.BOOKS.getValue();
         } catch (ServiceException e) {
+            logger.error(e.getMessage());
+
+            request.setAttribute(ParamConst.ERR_MESSAGE, ParamConst.ERR_MESSAGE_VAL);
 
             return URL.ERROR.getValue();
         }

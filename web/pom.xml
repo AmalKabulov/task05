@@ -12,6 +12,11 @@
     <url>http://maven.apache.org</url>
     <dependencies>
         <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
             <groupId>by.epam.parser</groupId>
             <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
@@ -27,7 +32,12 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>web</finalName>

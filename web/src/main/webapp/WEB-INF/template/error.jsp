@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h2>Some error</h2>
+<h2>${requestScope.err_message}</h2>
 </body>
 </html>
