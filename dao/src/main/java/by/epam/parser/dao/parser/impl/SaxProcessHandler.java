@@ -29,10 +29,6 @@ public class SaxProcessHandler extends DefaultHandler {
         books = new ArrayList<>();
     }
 
-    @Override
-    public void endDocument() throws SAXException {
-    }
-
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -62,7 +58,7 @@ public class SaxProcessHandler extends DefaultHandler {
 
         if (characters.length() > 0) {
             characters = characters.replaceAll(Constant.TWO_SPACES, Constant.SPACE);
-            characters += " ";
+            characters += Constant.SPACE;
             this.characters.append(characters);
         }
     }
