@@ -34,7 +34,7 @@ public class ParserCommand implements Command {
             request.setAttribute(ParamConst.COMMAND, command);
             return URL.BOOKS.getValue();
         } catch (ServiceException e) {
-            e.printStackTrace();
+
             return URL.ERROR.getValue();
         }
     }
