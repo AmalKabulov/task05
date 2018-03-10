@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="content">
+<div class="buttons" align="center">
     <form action="/" method="get">
         <input type="hidden" value="1" name="page">
         <input type="hidden" value="parse" name="command">

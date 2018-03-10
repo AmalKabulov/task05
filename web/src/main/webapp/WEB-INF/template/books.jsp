@@ -14,6 +14,7 @@
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
           rel="stylesheet"
           id="bootstrap-css">
+    <%--<link href="/resources/css/buuton.css" type="text/css" rel="stylesheet">--%>
 
 
 </head>
