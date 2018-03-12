@@ -2,6 +2,6 @@ package controller.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface Command {
+public interface Action {
     String execute(HttpServletRequest request);
 }

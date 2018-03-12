@@ -1,10 +1,10 @@
 package by.epam.parser.dao.parser.impl;
 
-import by.epam.parser.dao.XMLParserDao;
 import by.epam.parser.dao.parser.Constant;
+import by.epam.parser.dao.parser.XMLParser;
 import by.epam.parser.entity.Book;
-import by.epam.parser.exception.DAOException;
-import by.epam.parser.exception.ParserCreationException;
+import by.epam.parser.dao.parser.exception.ParseException;
+import by.epam.parser.dao.parser.exception.ParserCreationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -18,11 +18,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DomParserDaoImpl implements XMLParserDao<Book> {
+public class DOMParserImpl implements XMLParser {
 
     private final DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
     private final BookInitializer bookInitializer = new BookInitializer();
-    private final InputStream inputStream;
+//    private final InputStream inputStream;
     private final DocumentBuilder dom;
 
     {
@@ -34,18 +34,18 @@ public class DomParserDaoImpl implements XMLParserDao<Book> {
         }
     }
 
-    public DomParserDaoImpl(InputStream inputStream) {
-        this.inputStream = inputStream;
+    public DOMParserImpl() {
+//        this.inputStream = inputStream;
     }
 
 
     @Override
-    public List<Book> getAll() throws DAOException {
+    public List<Book> getAll(InputStream inputStream) throws ParseException {
         try {
             Document result = dom.parse(inputStream);
             return handle(result);
         } catch (SAXException | IOException e) {
-            throw new DAOException("ERROR WHILE PARSING FILE WITH DOM " + e);
+            throw new ParseException("ERROR WHILE PARSING FILE WITH DOM " + e);
         }
     }
 

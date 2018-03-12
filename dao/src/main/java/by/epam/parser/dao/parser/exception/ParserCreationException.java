@@ -1,4 +1,4 @@
-package by.epam.parser.exception;
+package by.epam.parser.dao.parser.exception;
 
 public class ParserCreationException extends RuntimeException {
     public ParserCreationException() {

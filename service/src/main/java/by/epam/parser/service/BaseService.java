@@ -1,11 +1,10 @@
 package by.epam.parser.service;
 
-import by.epam.parser.entity.BaseEntity;
-import by.epam.parser.service.exception.ServiceException;
+import by.epam.parser.entity.Book;
 
 import java.util.List;
 
-public interface BaseService<E extends BaseEntity> {
-    List<E> get(final int page, final int count) throws ServiceException;
+public interface BaseService {
+    List<Book> get(final int page, final int count) throws ServiceException;
     Integer getPageCount();
 }

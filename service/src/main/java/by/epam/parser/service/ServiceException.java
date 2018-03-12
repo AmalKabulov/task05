@@ -1,4 +1,4 @@
-package by.epam.parser.service.exception;
+package by.epam.parser.service;
 
 public class ServiceException extends Exception {
     public ServiceException() {

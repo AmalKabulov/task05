@@ -1,7 +1,7 @@
 package controller;
 
-import controller.command.ActionDirector;
-import controller.command.Command;
+import controller.command.ActionFactory;
+import controller.command.Action;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/")
-public class MainController extends HttpServlet {
+public class DefaultController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,13 +25,11 @@ public class MainController extends HttpServlet {
 
 
     private void prepareResponse(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ActionDirector actionDirector = ActionDirector.getInstance();
-        String command = req.getParameter(ParamConst.COMMAND);
-        if (command != null) {
-            String url = actionDirector.runAction(req);
-            req.getRequestDispatcher(url).forward(req, resp);
+        ActionFactory actionFactory = ActionFactory.getInstance();
+        String command = req.getParameter(Constant.COMMAND);
+        Action action = actionFactory.getAction(command);
+        String url = action.execute(req);
+        req.getRequestDispatcher(url).forward(req, resp);
 
-        }
-        req.getRequestDispatcher(URL.INDEX.getValue()).forward(req, resp);
     }
 }

@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SaxProcessHandler extends DefaultHandler {
+public class SAXProcessHandler extends DefaultHandler {
 
     private final BookInitializer bookInitializer = new BookInitializer();
     private final Map<String, String> bookValues = new HashMap<>();
@@ -21,7 +21,7 @@ public class SaxProcessHandler extends DefaultHandler {
     private Book book;
 
 
-    public SaxProcessHandler() {
+    public SAXProcessHandler() {
     }
 
     @Override

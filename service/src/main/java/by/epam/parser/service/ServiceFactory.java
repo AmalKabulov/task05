@@ -1,12 +1,11 @@
 package by.epam.parser.service;
 
+import by.epam.parser.dao.BaseDAO;
 import by.epam.parser.dao.DAOFactory;
-import by.epam.parser.dao.XMLParserDao;
-import by.epam.parser.service.impl.BookServiceImpl;
 
 public class ServiceFactory {
     private static final ServiceFactory instance = new ServiceFactory();
-    private DAOFactory daoFactory = DAOFactory.getInstance();
+    private DAOFactory parserDirector = DAOFactory.getInstance();
 
 
     private ServiceFactory() {
@@ -17,9 +16,10 @@ public class ServiceFactory {
     }
 
     public BaseService getService(final String parserType) {
-        XMLParserDao dao = daoFactory.getDAO(parserType);
-        return new BookServiceImpl(dao);
+        BaseDAO dao = parserDirector.get();
+        return new BookServiceImpl(dao, parserType);
     }
+
 
 
 }

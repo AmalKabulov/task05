@@ -1,13 +1,14 @@
 package controller.command.impl;
 
-import controller.URL;
-import controller.command.Command;
+import controller.Page;
+import controller.command.Action;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class HomeCommand implements Command {
+public class HomeAction implements Action {
+
     @Override
     public String execute(HttpServletRequest request) {
-        return URL.INDEX.getValue();
+        return Page.INDEX.getPath();
     }
 }

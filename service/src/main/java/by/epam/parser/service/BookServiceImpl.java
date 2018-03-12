@@ -1,30 +1,30 @@
-package by.epam.parser.service.impl;
+package by.epam.parser.service;
 
-import by.epam.parser.dao.XMLParserDao;
+import by.epam.parser.dao.BaseDAO;
 import by.epam.parser.entity.Book;
 import by.epam.parser.exception.DAOException;
-import by.epam.parser.service.BaseService;
-import by.epam.parser.service.exception.ServiceException;
 
 import java.util.Collection;
 import java.util.List;
 
-public class BookServiceImpl implements BaseService<Book> {
+public class BookServiceImpl implements BaseService {
 
-    private XMLParserDao dao;
+    private BaseDAO dao;
+    private String parserType;
     private Integer pageCount;
 
-    public BookServiceImpl(XMLParserDao dao) {
+    public BookServiceImpl(BaseDAO dao, String parserType) {
         this.dao = dao;
+        this.parserType = parserType;
     }
 
 
     @Override
     public List<Book> get(final int page, final int countOnPage) throws ServiceException {
-        int startIndex =  (page - 1)  * countOnPage;
+        int startIndex = (page - 1) * countOnPage;
         int endIndex = countOnPage + startIndex;
         try {
-            List books = dao.getAll();
+            List books = dao.getAll(parserType);
             pageCount = generatePageCount(books, countOnPage);
             return books.subList(startIndex, endIndex);
         } catch (DAOException e) {
@@ -32,11 +32,13 @@ public class BookServiceImpl implements BaseService<Book> {
         }
     }
 
-    public Integer getPageCount() {
-        return pageCount;
-    }
 
     private int generatePageCount(final Collection collection, final int countOnPage) {
-        return (int) Math.ceil( (collection.size() * 1.0) / countOnPage);
+        return (int) Math.ceil((collection.size() * 1.0) / countOnPage);
+    }
+
+
+    public Integer getPageCount() {
+        return pageCount;
     }
 }

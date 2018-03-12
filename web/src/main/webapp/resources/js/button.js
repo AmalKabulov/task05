@@ -1,1 +1,0 @@
-document.getElementById("button").style.transition = "all 2s";

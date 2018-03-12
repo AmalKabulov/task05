@@ -1,7 +1,6 @@
 package by.epam.parser.dao.parser;
 
 public final class Constant {
-    public static final String BOOKS_XML = "books.xml";
     public static final String BOOK_ELEMENT_TAG = "book";
 
     // book fields
@@ -18,8 +17,6 @@ public final class Constant {
     public static final String TWO_SPACES = "[\\s]{2,}";
     public static final String SPACE = " ";
 
-    //parser
-    public static final String SAX_PARSER = "SAX";
-    public static final String DOM_PARSER = "DOM";
+
 
 }
